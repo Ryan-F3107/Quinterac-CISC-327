@@ -1,0 +1,2 @@
+XFR 2345678 9999 2345679 my account
+EOS
