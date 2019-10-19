@@ -1,7 +1,7 @@
 """
 CISC 327 - Assignment 2
 Authors:
-        Anya Chulukova, achulukova@gmail.com, 20082947
+        Anna Chulukov, 17avc2@queensu.ca, 20082947
         Faranak Sharifi, 17fsb@queensu.ca, 20068900
         Marwan ElKhodary, m.elkhodary@queensu.ca, 20022212
         Ryan Fernandes, 17rf@queensu.ca, 20067569
