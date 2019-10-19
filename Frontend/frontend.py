@@ -7,7 +7,11 @@ Authors:
         Ryan Fernandes, 17rf@queensu.ca, 20067569
 
 Due: Saturday, October 18th, 2019
-This program carries out the transactions
+
+The intention of this program is to perform the front end task following the requirements and constrains.
+The input files are "your_account_list_file.txt" (the valid accounts list) and "your_transaction_summary.txt" (which remains empty); both taken in as
+command line arguments. The expected output file is the transaction file with the transaction summary of all the transactions performed and
+ending with an EOS (End of Session)
 """
 import sys  # used to take in parameters for the program
 
@@ -23,7 +27,8 @@ def readFile():
     accountsFileDir = sys.argv[1]
     with open(accountsFileDir) as accountsFile:
         accountsList = accountsFile.read().splitlines()
-    return accountsList
+    return accountsList  # returns the valid account numbers in a form of a list
+
 
 '''
 This function carries out the login transaction and has no parameters but returns the privilege requested by the 
@@ -36,7 +41,8 @@ def login():
     if privilege == "atm":
         return privilege
     elif privilege == "agent":
-        return privilege
+        return privilege    # Returns the type of privilege, to be used in various types of transaction
+
 
 '''
 This function carries out the create account transaction by taking in the account list and user privilege as 
@@ -157,6 +163,7 @@ def deleteAcct(accountsList, privilege):
                 accountName[0] != " " and accountName[-1] != " ":
             storeTransactionCode("DEL", None, None, accountNum, accountName)
 
+
 '''
 This function carries out the logout transaction, it does not take in any parameters, it writes to the transaction summary
 file from the global list created called "transactionCodes" and writes "EOS" at the end of the transaction Summary File. 
@@ -198,18 +205,18 @@ when the user creates a new account or logs out.
 
 
 def main():
-    global transactionCodes #needed for to use the global variable
-    session = True  #needed to run the loop, unless it turns false
+    global transactionCodes  # needed for to use the global variable
+    session = True  # needed to run the loop, unless it turns false
     userLogin = input("Please enter the command 'login': ").lower()
     if userLogin == "login":
         privilege = login()
         accountsList = readFile()  # gets a list of valid account numbers
-        count = 1
+        count = 1   # lets the user know how many transactions that they have performed
         while session is True:
-            userInput = input("\n" + "Transaction " + str(count) + " - Please enter type of transaction: ").lower()
+            userInput = input("\n" + "Transaction " + str(count) + " - Please enter type of transaction: ").lower()  #  converts input into lower case
             if userInput == "createacct":
                 createAcct(accountsList, privilege)
-                session = False
+                session = False  #   session ends since after creating an account the user cannot perform any other transaction in the same session,based on the constraint.
                 count += 1
             elif userInput == "withdraw":
                 withdraw(accountsList, privilege)
