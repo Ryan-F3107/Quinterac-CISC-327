@@ -5,9 +5,7 @@ Authors:
         Faranak Sharifi, 17fsb@queensu.ca, 20068900
         Marwan ElKhodary, m.elkhodary@queensu.ca, 20022212
         Ryan Fernandes, 17rf@queensu.ca, 20067569
-
 Due: Saturday, October 18th, 2019
-
 The intention of this program is to perform the front end task following the requirements and constrains.
 The input files are "your_account_list_file.txt" (the valid accounts list) and "your_transaction_summary.txt" (which remains empty); both taken in as
 command line arguments. The expected output file is the transaction file with the transaction summary of all the transactions performed and
@@ -38,11 +36,13 @@ user
 
 def login():
     privilege = input("Please enter type of session (atm or agent): ").lower()
+    while (privilege != "atm") and (privilege != "agent"):
+        print("Wrong input. Please print atm or agent")
+        privilege = input("Please enter type of session (atm or agent): ").lower()
     if privilege == "atm":
         return privilege
     elif privilege == "agent":
         return privilege    # Returns the type of privilege, to be used in various types of transaction
-
 
 '''
 This function carries out the create account transaction by taking in the account list and user privilege as 
@@ -53,19 +53,19 @@ parameters
 def createAcct(accountsList, privilege):
     if privilege == "atm":
         print("You cannot create an account while logged in as an atm user")
-        return None  # error case, end the transaction
+        return False  # error case, end the transaction
     else:
         accountNum = input("Please enter an account number: ")
-        if len(accountNum) == 7 and accountNum[0] != '0':  # account number must be exactly 7 characters and not start
-            # with 0
+        # account number must be exactly 7 characters and not start with 0
+        if len(accountNum) == 7 and accountNum[0] != '0':
             if accountNum in accountsList:
                 print("You cannot create an account that has been already created")
-                return None  # error case, end the transaction
+                return False  # error case, end the transaction
         else:
             print(
                 "You must create an account with an account number that is exactly 7 decimal digits, not beginning "
                 "with 0")
-            return None  # error case, end the transaction
+            return False  # error case, end the transaction
         accountName = input("Please enter an account name: ")
         if 3 < len(accountName) < 30 and accountName.isalnum() and \
                 accountName[0] != " " and \
@@ -73,7 +73,7 @@ def createAcct(accountsList, privilege):
             storeTransactionCode("NEW", None, None, accountNum, accountName)  # stores the transaction code for this
             # transaction
             logout()  # after creating an account you must logout
-
+            return True
 
 '''
 This function carries out the withdraw transaction by taking in the account list and privilege type as the parameters.
@@ -90,10 +90,10 @@ def withdraw(accountList, privilege):
         elif int(amountWithdraw) > 99999999:  # more constraints for the amount to withdraw
             print("You cannot withdraw this amount")
         else:
-            print("You withdrew $" + str(int(amountWithdraw) / 100) + " from " + str(
-                accountNumber))  # print for the user
-            storeTransactionCode("WDR", None, str(amountWithdraw), str(accountNumber),
-                                 None)  # store the transaction code
+            # print for the user
+            print("You withdrew $" + str(int(amountWithdraw) / 100) + " from " + str(accountNumber))
+            # store the transaction code
+            storeTransactionCode("WDR", None, str(amountWithdraw), str(accountNumber), None)
     else:
         print("Your account number is not valid")
         return None
@@ -148,7 +148,6 @@ def transfer(accountList, privilege):
 This function carries out the delete account transaction by taking in the account list and privilege as parameters
 '''
 
-
 def deleteAcct(accountsList, privilege):
     if privilege == "atm":
         print("You cannot delete an account while logged in as an atm user")
@@ -169,12 +168,11 @@ This function carries out the logout transaction, it does not take in any parame
 file from the global list created called "transactionCodes" and writes "EOS" at the end of the transaction Summary File. 
 '''
 
-
 def logout():
     transactionSummaryFile = open(sys.argv[2], "a+")
     for i in transactionCodes:
         transactionSummaryFile.write(i + "\n")
-    transactionSummaryFile.write("EOS")
+    transactionSummaryFile.write("EOS\n")
     print("Your session has ended")
 
 
@@ -199,6 +197,38 @@ def storeTransactionCode(tranCode, toAcctNum, amountCent, fromAcctNum, acctName)
 
 
 '''
+This function runs the user session: it asks them what they want to do and calls the appropriate function 
+'''
+def userSession(accountsList):
+    session = True # needed to run the loop, unless it turns false
+    privilege = login()
+    count = 1  # lets the user know how many transactions that they have performed
+    while session:
+        userInput = input("\n" + "Transaction " + str(
+            count) + " - Please enter type of transaction: ").lower()  # converts input into lower case
+        if userInput == "createacct":
+            #if account is created true is returned, and we enter the if statement
+            if createAcct(accountsList, privilege):
+                session = False  # session ends since after creating an account the user cannot perform any other transaction in the same session,based on the constraint.
+            count += 1
+        elif userInput == "withdraw":
+            withdraw(accountsList, privilege)
+            count += 1
+        elif userInput == "deposit":
+            deposit(accountsList, privilege)
+            count += 1
+        elif userInput == "transfer":
+            transfer(accountsList, privilege)
+            count += 1
+        elif userInput == "deleteacct":
+            deleteAcct(accountsList, privilege)
+            count += 1
+        elif userInput == "logout":
+            logout()
+            session = False
+
+
+'''
 Main runs the whole program, it contains a loop that allows the user to perform transactions, and the program only ends 
 when the user creates a new account or logs out.
 '''
@@ -206,35 +236,19 @@ when the user creates a new account or logs out.
 
 def main():
     global transactionCodes  # needed for to use the global variable
-    session = True  # needed to run the loop, unless it turns false
-    userLogin = input("Please enter the command 'login': ").lower()
-    if userLogin == "login":
-        privilege = login()
-        accountsList = readFile()  # gets a list of valid account numbers
-        count = 1   # lets the user know how many transactions that they have performed
-        while session is True:
-            userInput = input("\n" + "Transaction " + str(count) + " - Please enter type of transaction: ").lower()  #  converts input into lower case
-            if userInput == "createacct":
-                createAcct(accountsList, privilege)
-                session = False  #   session ends since after creating an account the user cannot perform any other transaction in the same session,based on the constraint.
-                count += 1
-            elif userInput == "withdraw":
-                withdraw(accountsList, privilege)
-                count += 1
-            elif userInput == "deposit":
-                deposit(accountsList, privilege)
-                count += 1
-            elif userInput == "transfer":
-                transfer(accountsList, privilege)
-                count += 1
-            elif userInput == "deleteacct":
-                deleteAcct(accountsList, privilege)
-                count += 1
-            elif userInput == "logout":
-                logout()
-                session = False
-    else:
-        print("You must login to start the session, please restart the program ")
+    # during the day the frontend runs.
+    # I am assuming day is between 6 am and 8pm (20 hours)
+    # after every transaction I add 0.1 to the current time, which is about 6 minutes.
+    hour = 6
+    accountsList = readFile()  # gets a list of valid account numbers
+    while hour < 20:
+        print("\n\nThis is a new session")
+        userLogin = input("Please enter the command 'login': ").lower()
+        while userLogin != "login":
+            print("You must login to start the session")
+            userLogin = input("Please enter the command 'login': ").lower()
+        userSession(accountsList)
+        hour += 0.1 #adding 6 minutes
 
 
 main()
