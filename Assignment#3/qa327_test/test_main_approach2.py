@@ -687,7 +687,180 @@ def test_R6T8(capsys):
 
 # ---------------------------------------------------- Start of Transfer --------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
+def test_R7T1(capsys):
+    """Testing R7T1: User cannot enter anything non-numeric for account number
 
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', 'abcdefgh', '2000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R7T2(capsys):
+    """Testing R7T2: checks that accounts entered are valid
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '12345678', '8', '2000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_R7T3(capsys):
+    """Testing R7T3: checks that outgoing account is not blank
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '', '1234567', '2000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_R7T4(capsys):
+    """Testing R7T4: checks that destination account is not blank
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '', '2000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_R7T5(capsys):
+    """Testing R7T5: checks that account exists
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '2222222', '1234567', '2000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_R7T6(capsys):
+    """Testing R7T6: checks that destination account exists
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2222222', '2000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+#test_R7T7 was based on a misunderstanding of the requirments
+def test_R7T8(capsys):
+    """Testing R7T8: checks that amount is not negative
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '-2000', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_R7T9(capsys):
+    """Testing R7T9: checks that amount is not 0
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '0', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_R7T10(capsys):
+    """Testing R7T10: checks that transfer amount field is not empty
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_R7T11(capsys):
+    """Testing R7T11: checks that transfer amount entered is not non-numeric
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', 'aaa', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_R7T12(capsys):
+    """Testing R7T12: checks that valid account summary file is written
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '2000', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['XFR 2345678 2000 1234567 ***', 'EOS 0000000 000 0000000 ***']
+    )
+
+def test_R7T13(capsys):
+    """Testing R7T13: checks that agent can transfer money
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '2000', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['XFR 2345678 2000 1234567 ***','EOS 0000000 000 0000000 ***']
+    )
+def test_R7T14(capsys):
+    """Testing R7T14: checks that agent can transfer money
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'transfer', '1234567', '1234567', '2000', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
 
 # ---------------------------------------------------- END OF Transfer ----------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
@@ -697,7 +870,7 @@ def test_R6T8(capsys):
 # -------------------------------------------------------------------------------------------------------------------- #
 
 
-# ---------------------------------------------------- End of Transfer ----------------------------------------------- #
+# ---------------------------------------------------- End of Logout ----------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
 
 

@@ -147,21 +147,30 @@ def deposit(accountList, privilege):
 '''
 This function carries out the transfer transaction by taking in the account list and privilege as parameters
 '''
-
-
 def transfer(accountList, privilege):
     fromAccountNumber = input("Enter your account Number: ")
     toAccountNumber = input("Enter the account number that you are transferring to: ")
-    if fromAccountNumber in accountList and toAccountNumber in accountList:
+    if (fromAccountNumber == toAccountNumber):
+        print("Error: destination account is the same as the current account")
+    elif fromAccountNumber in accountList and toAccountNumber in accountList:
         amountTransfer = input("Enter amount to transfer in cents: ")
-        if int( amountTransfer) > 1000000 and privilege == "atm":
-            print("You cannot transfer this amount as an atm user")
+        try:
+            amountTransfer=int(amountTransfer)
+            if int(amountTransfer) > 1000000 and privilege == "atm":
+                print("You cannot transfer this amount as an atm user")
+                return None
+            elif int(amountTransfer) > 99999999:
+                print("You cannot transfer this amount")
+            elif int(amountTransfer)<0:
+                print("You cannot transfer negative amounts")
+            elif int(amountTransfer)==0:
+                print("You cannot transfer zero")
+            else:
+                print("You transferred $" + str(int(amountTransfer) / 100) + " to " + str(toAccountNumber))
+                storeTransactionCode("XFR", str(toAccountNumber), str(amountTransfer), str(fromAccountNumber), None)
+        except ValueError: #if value entered to be transfered is not an integer
+            print("Amount entered is not valid")
             return None
-        elif int(amountTransfer) > 99999999:
-            print("You cannot transfer this amount")
-        else:
-            print("You transferred $" + str(int(amountTransfer) / 100) + " to " + str(toAccountNumber))
-            storeTransactionCode("XFR", str(toAccountNumber), str(amountTransfer), str(fromAccountNumber), None)
     else:
         print("Your account number or the account number that you are trying to transfer to is not valid")
         return None
