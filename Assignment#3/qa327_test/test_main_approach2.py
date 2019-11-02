@@ -1,0 +1,780 @@
+import tempfile
+from importlib import reload
+import os
+import io
+import sys
+import qa327.app as app
+
+path = os.path.dirname(os.path.abspath(__file__))
+
+
+# ---------------------------------------------------- START OF LOGIN ------------------------------------------------ #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+def test_r1t1(capsys):
+    """Check that you cannot logout before logging in
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['logout', 'login', 'atm', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t2(capsys):
+    """Check that you cannot create an account before logging in
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['createacct', 'login', 'atm', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t3(capsys):
+    """Check that you cannot delete an existing account before logging in
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['deleteacct', 'login', 'atm', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t4(capsys):
+    """Check that you cannot deposit into an account before logging in
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['deposit', 'login', 'atm', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t5(capsys):
+    """Check that you cannot withdraw from an account before logging in
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['withdraw', 'login', 'atm', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t6(capsys):
+    """Check that you cannot transfer between accounts before logging in
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['transfer', 'login', 'atm', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t7(capsys):
+    """Check that you cannot login before logging out of previous session
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'login', 'atm', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t8(capsys):
+    """Check that you cannot create an account with unprivileged access
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'createacct', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: You cannot create an account while logged in as an atm user', 'Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t9(capsys):
+    """Check that you cannot delete an account with unprivileged access
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deleteacct', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t10(capsys):
+    """Check that creating an account works with privileged access
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'createacct',  '1234567', 'accountName1', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Please enter an account number: Please enter an account name: Your session has ended'],
+        expected_output_transactions=['NEW 0000000 000 1234567 accountName1', 'EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_r1t11(capsys):
+    """Check that deleting an account works with privileged access
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'deleteacct', '1234567', 'accountName2', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Please enter an account number you are trying to delete: Please enter an account name: Your session has ended'],
+        expected_output_transactions=['DEL 0000000 000 1234567 accountName2', 'EOS 0000000 000 0000000 ***']
+    )
+
+
+# ---------------------------------------------------- END OF LOGIN -------------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+# ---------------------------------------------------- START OF CreateAcct ------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+def test_R3T1(capsys):
+    """Testing R3T1: The user cannot create an account with an empty account name field
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'createacct', '2345678', '', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R3T2(capsys):
+    """Testing R3T2: The user cannot create an account with an empty account number field
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'createacct', '', 'John Doe', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R3T3(capsys):
+    """Testing R3T3: The user cannot create an account with an invalid account number (starting with 0)
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'createacct', 'John Doe', '0123456', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R3T4(capsys):
+    """Testing R3T4: The user cannot create an account with an invalid account name (starting/ending with a space)
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'createacct', '2345678', ' John Doe ', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R3T5(capsys):
+    """Testing R3T5: The user cannot create an account with an invalid account name (not enough characters)
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'createacct', '2345678', 'J', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R3T6(capsys):
+    """Testing R3T6: The user cannot create an account with an account number that already exists
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'createacct', '1234567', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R3T7(capsys):
+    """Checking R3T13: User can create an account with a valid account name and number
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'createacct', '2345678', 'John Doe', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+# ---------------------------------------------------- END OF CreateAcct --------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+# ---------------------------------------------------- START OF DeleteAcct ------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+def test_R4T1(capsys):
+    """
+    Testing test_R4T1: Can't delete an account with an empty account number field
+    Program will give a print statement mentioning that account number field is left empty
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'deleteacct', '', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R4T2(capsys):
+    """
+    Testing test_R4T2: Can't delete an account with an empty account name field
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deleteacct', '1234567', '', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R4T3(capsys):
+    """
+    Testing test_R4T3: Can't delete an account with an invalid account number
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'deleteacct', '1234566', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R4T4(capsys):
+    """
+    Testing test_R4T4: Can't delete an account with an invalid account name
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'deleteacct', '1234567', 'J', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R4T5(capsys):
+    """
+    Testing test_R4T5: check that account name and account number is valid
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'deleteAcct', '1234567', 'Bob', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Please enter an account number you are trying to delete: Please enter an account name: Your session has ended'],
+        expected_output_transactions=['DEL 0000000 000 1234567 Bob', 'EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R4T6(capsys):
+    """
+    Testing test_R4T6: Can't have empty account fields
+    Program will print a statement mentioning that account number field cannot be left empty
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'deleteAcct', '', '', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+# ---------------------------------------------------- END OF DeleteAcct --------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+# ---------------------------------------------------- START OF Deposit ---------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+def test_R5T1(capsys):
+    """
+    Testing test_R5T1: Can't deposit to an account with an empty account number field
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '', '1200', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=[],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T2(capsys):
+    """
+    Testing test_R5T2: Can't deposit to an account with an empty amount to deposit field
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '1234567', '', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=[],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T3(capsys):
+    """
+    Testing test_R5T3: Checks if the deposit transaction works as it should with the right inputs
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '1234567', '13000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['DEP 1234567 13000 0000000 ***', 'EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T4(capsys):
+    """
+    Testing test_R5T4: Checks that amount to deposit is valid or not
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '1234567', '99999999999', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T5(capsys):
+    """
+    Testing test_R5T5: Checks that checks that account number is valid or not
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '0234560', '12000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T6(capsys):
+    """
+    Testing test_R5T6: Cannot enter anything non-numeric for the deposit amount
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '1234567', 'a-b.c,d?e', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T7(capsys):
+    """
+    Testing test_R5T7: Can't deposit to an account that does not exist
+    The program will print a statement mentioning that account does not exist on the terminal
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '1847124', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T8(capsys):
+    """
+    Testing test_R5T8: Can't leave the number and deposit field empty
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '', '', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T9(capsys):
+    """
+    Testing test_R5T9: Can't deposit more than $2000 in atm mode
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'deposit', '1234567', '3000000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T10(capsys):
+    """
+    Testing test_R5T10: Can't deposit more than $999999.99 in agent mode
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'deposit', '1234567', '999999999', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R5T11(capsys):
+    """
+    Testing test_R5T11: check if the user can deposit from the agent type login
+    :param capsys: object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'deposit', '1234567', '500000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['DEP 1234567 500000 0000000 ***', 'EOS 0000000 000 0000000 ***']
+    )
+
+
+# ---------------------------------------------------- END OF Deposit ------------------------------------------------ #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+# ---------------------------------------------------- START OF Withdraw --------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+def test_R6T1(capsys):
+    """Testing R6T1: The user cannot withdraw from an invalid account number
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'withdraw', '7654321', 'logout'],  # no withdrawal amount as program will give
+        # an error print statement to user to enter a valid account
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        # session will end once user enters 'logout'
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R6T2(capsys):
+    """Testing R6T2: The user cannot withdraw more than $1000 in atm mode
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'withdraw', '1234567', '200000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R6T3(capsys):
+    """Testing R6T3: The user cannot withdraw more than $999,999.99 in agent mode
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'withdraw', '1234567', '200000000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        # transaction summary file only consists of EOS
+    )
+
+
+def test_R6T4(capsys):  # need to revisit this
+    """Testing R6T4: User cannot withdraw with an empty amount field
+
+    Arguments: capsys -- object created by pytest to capture stdout and stderr """
+    helper(capsys=capsys,
+           terminal_input=['login', 'agent', 'withdraw', '1234567', '', 'logout'],
+           intput_valid_accounts=['1234567'],
+           expected_tail_of_terminal_output=[
+               'Transaction 2 - Please enter type of transaction: Your session has ended'],
+           expected_output_transactions=['EOS 0000000 000 0000000 ***'])
+
+
+def test_R6T5(capsys):
+    """Testing R6T4: User cannot withdraw with an empty amount field
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'withdraw', '', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R6T6(capsys):
+    """Testing R6T6: Check - User should be able to withdraw with the valid account number and amount in atm mode
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'withdraw', '1234567', '2000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['WDR 0000000 2000 1234567 ***', 'EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R6T7(capsys):
+    """Testing R6T7: Check - User should be able to withdraw with the valid account number and amount in agent mode
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'withdraw', '1234567', '2000', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['WDR 0000000 2000 1234567 ***', 'EOS 0000000 000 0000000 ***']
+    )
+
+
+def test_R6T8(capsys):
+    """Testing R6T8: User cannot enter anything non-numeric for the withdrawal amount
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'withdraw', '1234567', 'abcdefgh', 'logout'],
+        intput_valid_accounts=['1234567'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        # need to revisit this
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+# ---------------------------------------------------- END OF Withdraw ----------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+# ---------------------------------------------------- Start of Transfer --------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+# ---------------------------------------------------- END OF Transfer ----------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+# ---------------------------------------------------- Start of Logout ----------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+# ---------------------------------------------------- End of Transfer ----------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
+
+
+def helper(
+        capsys,
+        terminal_input,
+        expected_tail_of_terminal_output,
+        intput_valid_accounts,
+        expected_output_transactions
+):
+    """Helper function for testing
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+        terminal_input -- list of string for terminal input
+        expected_tail_of_terminal_output list of expected string at the tail of terminal
+        intput_valid_accounts -- list of valid accounts in the valid_account_list_file
+        expected_output_transactions -- list of expected output transactions
+    """
+
+    # cleanup package
+    reload(app)
+
+    # create a temporary file in the system to store output transactions
+    temp_fd, temp_file = tempfile.mkstemp()
+    transaction_summary_file = temp_file
+
+    # create a temporary file in the system to store the valid accounts:
+    temp_fd2, temp_file2 = tempfile.mkstemp()
+    valid_account_list_file = temp_file2
+    with open(valid_account_list_file, 'w') as wf:
+        wf.write('\n'.join(intput_valid_accounts))
+
+    # prepare program parameters
+    sys.argv = [
+        'app.py',
+        valid_account_list_file,
+        transaction_summary_file]
+
+    # set terminal input
+    sys.stdin = io.StringIO(
+        '\n'.join(terminal_input))
+
+    # run the program
+    app.main()
+
+    # capture terminal output / errors
+    # assuming that in this case we don't use stderr
+    out, err = capsys.readouterr()
+
+    # split terminal output in lines
+    out_lines = out.splitlines()
+    # print out the testing information for debugging
+    # the following print content will only display if a
+    # test case failed:
+    print('std.in:', terminal_input)
+    print('valid accounts:', intput_valid_accounts)
+    print('terminal output:', out_lines)
+    print('terminal output (expected tail):', expected_tail_of_terminal_output)
+
+    # compare terminal outputs at the end.`
+    for i in range(1, len(expected_tail_of_terminal_output)+1):
+        index = i * -1
+        assert expected_tail_of_terminal_output[index] == out_lines[index]
+
+    # compare transactions:
+    with open(transaction_summary_file, 'r') as of:
+        content = of.read().splitlines()
+        # print out the testing information for debugging
+        # the following print content will only display if a
+        # test case failed:
+        print('output transactions:', content)
+        print('output transactions (expected):', expected_output_transactions)
+
+        for ind in range(len(content)):
+            assert content[ind] == expected_output_transactions[ind]
+
+    # clean up
+    os.close(temp_fd)
+    os.remove(temp_file)
