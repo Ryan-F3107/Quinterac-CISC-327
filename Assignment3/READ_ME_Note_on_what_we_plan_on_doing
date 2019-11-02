@@ -1,9 +1,0 @@
-Adding starter files,
-*** note for team ***
--->We plan on using the test 2 approach
-	So the r2 folder from the Prof. python test framework
-	is not required.
-
---> Will write all the transactions into one file[initial named as test_main_approach2],
-	make it simple to read. 
---> Finally,submit the program with only the required files in a new folder
