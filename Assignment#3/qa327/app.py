@@ -42,7 +42,7 @@ def login():
     if privilege == "atm":
         return privilege
     elif privilege == "agent":
-        return privilege    # Returns the type of privilege, to be used in various types of transaction
+        return privilege  # Returns the type of privilege, to be used in various types of transaction
 
 
 '''
@@ -68,15 +68,16 @@ def createAcct(accountsList, privilege):
                 "with 0")
             return False  # error case, end the transaction
         accountName = input("Please enter an account name: ")
-        if 3 <= len(accountName) <= 30 and (accountName.isalnum() or accountName.isspace()) and \
-                accountName[0] != " " and \
-                accountName[-1] != " ":  # the constraints given in lecture for the accountName
-            storeTransactionCode("NEW", None, None, accountNum, accountName)  # stores the transaction code for this
-            # transaction
+        accountNameNoSpace = accountName.replace(" ", "")  # Removes all the spaces from the string
+        # Checks if the original string satisfies the conditions from Transaction Summary File
+        if 3 <= len(accountName) <= 30 and accountName[0] != " " and accountName[-1] != " " and \
+            accountNameNoSpace.isalnum():   # checks if the string is alphanumeric
+            storeTransactionCode("NEW", None, None, accountNum, accountName)
             return True
         else:
-            print("You must enter an alphanumeric account name that is between 3 and 30 characters and doesn't begin "
-                  "or end with whitespaces")
+            print(
+                "You must enter an alphanumeric account name that is between 3 and 30 characters and doesn't begin "
+                "or end with whitespaces")
             return False
 
 
@@ -147,6 +148,8 @@ def deposit(accountList, privilege):
 '''
 This function carries out the transfer transaction by taking in the account list and privilege as parameters
 '''
+
+
 def transfer(accountList, privilege):
     fromAccountNumber = input("Enter your account Number: ")
     toAccountNumber = input("Enter the account number that you are transferring to: ")
@@ -155,20 +158,20 @@ def transfer(accountList, privilege):
     elif fromAccountNumber in accountList and toAccountNumber in accountList:
         amountTransfer = input("Enter amount to transfer in cents: ")
         try:
-            amountTransfer=int(amountTransfer)
+            amountTransfer = int(amountTransfer)
             if int(amountTransfer) > 1000000 and privilege == "atm":
                 print("You cannot transfer this amount as an atm user")
                 return None
             elif int(amountTransfer) > 99999999:
                 print("You cannot transfer this amount")
-            elif int(amountTransfer)<0:
+            elif int(amountTransfer) < 0:
                 print("You cannot transfer negative amounts")
-            elif int(amountTransfer)==0:
+            elif int(amountTransfer) == 0:
                 print("You cannot transfer zero")
             else:
                 print("You transferred $" + str(int(amountTransfer) / 100) + " to " + str(toAccountNumber))
                 storeTransactionCode("XFR", str(toAccountNumber), str(amountTransfer), str(fromAccountNumber), None)
-        except ValueError: #if value entered to be transfered is not an integer
+        except ValueError:  # if value entered to be transfered is not an integer
             print("Amount entered is not valid")
             return None
     else:
@@ -194,13 +197,16 @@ def deleteAcct(accountsList, privilege):
             print("You cannot delete an account that hasn't been already created")
             return None
         accountName = input("Please enter an account name: ")
-        if 3 <= len(accountName) <= 30 and (accountName.isalnum() or accountName.isspace()) and \
-                accountName[0] != " " and accountName[-1] != " ":
+        accountNameNoSpace = accountName.replace(" ", "")  # Removes all the spaces from the string
+        # Checks if the original string satisfies the conditions from Transaction Summary File
+        if 3 <= len(accountName) <= 30 and accountName[0] != " " and accountName[-1] != " " and \
+                accountNameNoSpace.isalnum():  # checks if the string is alphanumeric
             storeTransactionCode("DEL", None, None, accountNum, accountName)
             return True
         else:
-            print("You must enter an alphanumeric account name that is between 3 and 30 characters and doesn't begin "
-                  "or end with whitespaces")
+            print(
+                "You must enter an alphanumeric account name that is between 3 and 30 characters and doesn't begin "
+                "or end with whitespaces")
             return False
 
 
@@ -216,7 +222,22 @@ def logout():
         transactionSummaryFile.write(i + "\n")
     transactionSummaryFile.write("EOS 0000000 000 0000000 ***\n")
     print("Your session has ended")
-    return True
+    another = input("Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: ")
+    while True:
+        if len(another) > 0 and another.isalnum():
+            if another == "yes" or another == "y":
+                return False
+            elif another == "no" or another == "n":
+                print("Thank you for using Quinterac, have a nice day!")
+                return True
+            else:
+                print("You have entered an unexpected string, your session has ended ")
+                print("Thank you for using Quinterac, have a nice day!")
+                return True
+        else:
+            print("your session has ended")
+            print("Thank you for using Quinterac, have a nice day!")
+            return True
 
 
 '''
@@ -285,15 +306,12 @@ def main():
     # during the day the frontend runs.
     # I am assuming day is between 6 am and 8pm (20 hours)
     # after every transaction I add 0.1 to the current time, which is about 6 minutes.
-    hour = 6
+    good_to_exit = False
     accountsList = readFile()  # gets a list of valid account numbers
-    while hour < 20:
+    while not good_to_exit:
         print("\n\nThis is a new session")
-        userLogin = input("Please enter the command 'login':").lower()
+        userLogin = input("Please enter the command 'login': ").lower()
         while userLogin != "login":
             print("You must login to start the session")
             userLogin = input("Please enter the command 'login': ").lower()
         good_to_exit = userSession(accountsList)
-        if good_to_exit:
-            break
-        hour += 0.1  # adding 6 minutes

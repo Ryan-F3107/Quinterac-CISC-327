@@ -8,6 +8,7 @@ import qa327.app as app
 path = os.path.dirname(os.path.abspath(__file__))
 
 
+
 # ---------------------------------------------------- START OF LOGIN ------------------------------------------------ #
 # -------------------------------------------------------------------------------------------------------------------- #
 
@@ -20,9 +21,9 @@ def test_r1t1(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['logout', 'login', 'atm', 'logout'],
+        terminal_input=['logout', 'login', 'atm', 'logout', ' '],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -35,9 +36,9 @@ def test_r1t2(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['createacct', 'login', 'atm', 'logout'],
+        terminal_input=['createacct', 'login', 'atm', 'logout', 'n'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -50,9 +51,9 @@ def test_r1t3(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['deleteacct', 'login', 'atm', 'logout'],
+        terminal_input=['deleteacct', 'login', 'atm', 'logout', 'no'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -65,9 +66,9 @@ def test_r1t4(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['deposit', 'login', 'atm', 'logout'],
+        terminal_input=['deposit', 'login', 'atm', 'logout', 'no'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -80,9 +81,9 @@ def test_r1t5(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['withdraw', 'login', 'atm', 'logout'],
+        terminal_input=['withdraw', 'login', 'atm', 'logout', 'NO'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -95,9 +96,9 @@ def test_r1t6(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['transfer', 'login', 'atm', 'logout'],
+        terminal_input=['transfer', 'login', 'atm', 'logout', 'No'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -110,9 +111,9 @@ def test_r1t7(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'login', 'atm', 'logout'],
+        terminal_input=['login', 'login', 'atm', 'logout', 'NO'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -125,9 +126,9 @@ def test_r1t8(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'createacct', 'logout'],
+        terminal_input=['login', 'atm', 'createacct', 'logout', 'no'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: You cannot create an account while logged in as an atm user', 'Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -140,9 +141,9 @@ def test_r1t9(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deleteacct', 'logout'],
+        terminal_input=['login', 'atm', 'deleteacct', 'logout', 'no'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -155,9 +156,9 @@ def test_r1t10(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'createacct',  '1234567', 'accountName1', 'logout'],
+        terminal_input=['login', 'agent', 'createacct',  '1234567', 'accountName1', 'logout', 'no'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Please enter an account number: Please enter an account name: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['NEW 0000000 000 1234567 accountName1', 'EOS 0000000 000 0000000 ***']
     )
 
@@ -170,9 +171,9 @@ def test_r1t11(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'deleteacct', '1234567', 'accountName2', 'logout'],
+        terminal_input=['login', 'agent', 'deleteacct', '1234567', 'accountName2', 'logout','no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Please enter an account number you are trying to delete: Please enter an account name: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['DEL 0000000 000 1234567 accountName2', 'EOS 0000000 000 0000000 ***']
     )
 
@@ -192,11 +193,12 @@ def test_R3T1(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'createacct', '2345678', '', 'logout'],
+        terminal_input=['login', 'agent', 'createacct', '2345678', '', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
-        # transaction summary file only consists of EOS
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including
+        # login/logout) took place, transaction summary file only consists of EOS
     )
 
 
@@ -208,11 +210,12 @@ def test_R3T2(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'createacct', '', 'John Doe', 'logout'],
+        terminal_input=['login', 'agent', 'createacct', '', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
-        # transaction summary file only consists of EOS
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including
+        # login/logout) took place, transaction summary file only consists of EOS
     )
 
 
@@ -224,11 +227,12 @@ def test_R3T3(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'createacct', 'John Doe', '0123456', 'logout'],
+        terminal_input=['login', 'agent', 'createacct', '0123456', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
-        # transaction summary file only consists of EOS
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including
+        # login/logout) took place, transaction summary file only consists of EOS
     )
 
 
@@ -240,11 +244,12 @@ def test_R3T4(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'createacct', '2345678', ' John Doe ', 'logout'],
+        terminal_input=['login', 'agent', 'createacct', '2345678', ' John Doe ', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
-        # transaction summary file only consists of EOS
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including
+        # login/logout) took place, transaction summary file only consists of EOS
     )
 
 
@@ -256,11 +261,12 @@ def test_R3T5(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'createacct', '2345678', 'J', 'logout'],
+        terminal_input=['login', 'agent', 'createacct', '2345678', 'J', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
-        # transaction summary file only consists of EOS
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including
+        # login/logout) took place, transaction summary file only consists of EOS
     )
 
 
@@ -272,11 +278,12 @@ def test_R3T6(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'createacct', '1234567', 'logout'],
+        terminal_input=['login', 'agent', 'createacct', '1234567', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
-        # transaction summary file only consists of EOS
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including
+        # login/logout) took place, transaction summary file only consists of EOS
     )
 
 
@@ -288,10 +295,11 @@ def test_R3T7(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'createacct', '2345678', 'John Doe', 'logout'],
+        terminal_input=['login', 'agent', 'createacct', '2345678', 'John Doe', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['NEW 0000000 000 2345678 John Doe', 'EOS 0000000 000 0000000 ***']
     )
 
 
@@ -311,9 +319,9 @@ def test_R4T1(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'deleteacct', '', 'logout'],
+        terminal_input=['login', 'agent', 'deleteacct', '', 'logout','no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -325,9 +333,9 @@ def test_R4T2(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deleteacct', '1234567', '', 'logout'],
+        terminal_input=['login', 'atm', 'deleteacct', '1234567', '', 'logout','no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -339,9 +347,9 @@ def test_R4T3(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'deleteacct', '1234566', 'logout'],
+        terminal_input=['login', 'agent', 'deleteacct', '1234566', 'logout', 'NO'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -353,9 +361,9 @@ def test_R4T4(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'deleteacct', '1234567', 'J', 'logout'],
+        terminal_input=['login', 'agent', 'deleteacct', '1234567', 'J', 'logout','no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -367,10 +375,10 @@ def test_R4T5(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'deleteAcct', '1234567', 'Bob', 'logout'],
+        terminal_input=['login', 'agent', 'deleteAcct', '1234567', 'Johnny Bravo', 'logout','no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Please enter an account number you are trying to delete: Please enter an account name: Your session has ended'],
-        expected_output_transactions=['DEL 0000000 000 1234567 Bob', 'EOS 0000000 000 0000000 ***']
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['DEL 0000000 000 1234567 Johnny Bravo', 'EOS 0000000 000 0000000 ***']
     )
 
 
@@ -382,9 +390,9 @@ def test_R4T6(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'deleteAcct', '', '', 'logout'],
+        terminal_input=['login', 'agent', 'deleteAcct', '', '', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -403,9 +411,9 @@ def test_R5T1(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '', '1200', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '', '1200', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=[],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -417,9 +425,9 @@ def test_R5T2(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '1234567', '', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '1234567', '', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=[],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -431,9 +439,9 @@ def test_R5T3(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '1234567', '13000', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '1234567', '13000', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['DEP 1234567 13000 0000000 ***', 'EOS 0000000 000 0000000 ***']
     )
 
@@ -445,9 +453,9 @@ def test_R5T4(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '1234567', '99999999999', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '1234567', '99999999999', 'logout','no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -459,9 +467,9 @@ def test_R5T5(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '0234560', '12000', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '0234560', '12000', 'logout','n'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -473,9 +481,9 @@ def test_R5T6(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '1234567', 'a-b.c,d?e', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '1234567', 'a-b.c,d?e', 'logout',' '],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -488,9 +496,9 @@ def test_R5T7(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '1847124', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '1847124', 'logout',' '],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -502,9 +510,9 @@ def test_R5T8(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '', '', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '', '', 'logout', 'n'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -516,9 +524,9 @@ def test_R5T9(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'deposit', '1234567', '3000000', 'logout'],
+        terminal_input=['login', 'atm', 'deposit', '1234567', '3000000', 'logout', "no"],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -530,9 +538,9 @@ def test_R5T10(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'deposit', '1234567', '999999999', 'logout'],
+        terminal_input=['login', 'agent', 'deposit', '1234567', '999999999', 'logout', 'No'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -544,9 +552,9 @@ def test_R5T11(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'deposit', '1234567', '500000', 'logout'],
+        terminal_input=['login', 'agent', 'deposit', '1234567', '500000', 'logout', 'n'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['DEP 1234567 500000 0000000 ***', 'EOS 0000000 000 0000000 ***']
     )
 
@@ -567,12 +575,14 @@ def test_R6T1(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'withdraw', '7654321', 'logout'],  # no withdrawal amount as program will give
-        # an error print statement to user to enter a valid account
+        terminal_input=['login', 'atm', 'withdraw', '7654321', 'logout', 'no'],  # no withdrawal amount as program
+        # will give an error print statement to user to enter a valid account
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
         # session will end once user enters 'logout'
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+        # since no transaction (not including login/logout) took place,
         # transaction summary file only consists of EOS
     )
 
@@ -585,10 +595,12 @@ def test_R6T2(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'withdraw', '1234567', '200000', 'logout'],
+        terminal_input=['login', 'atm', 'withdraw', '1234567', '200000', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+        # since no transaction (not including login/logout) took place,
         # transaction summary file only consists of EOS
     )
 
@@ -601,23 +613,25 @@ def test_R6T3(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'withdraw', '1234567', '200000000', 'logout'],
+        terminal_input=['login', 'agent', 'withdraw', '1234567', '200000000', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']  # since no transaction (not including login/logout) took place,
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+        # since no transaction (not including login/logout) took place,
         # transaction summary file only consists of EOS
     )
 
 
-def test_R6T4(capsys):  # need to revisit this
+def test_R6T4(capsys):
     """Testing R6T4: User cannot withdraw with an empty amount field
 
     Arguments: capsys -- object created by pytest to capture stdout and stderr """
     helper(capsys=capsys,
-           terminal_input=['login', 'agent', 'withdraw', '1234567', '', 'logout'],
+           terminal_input=['login', 'agent', 'withdraw', '1234567', '', 'logout', 'no'],
            intput_valid_accounts=['1234567'],
-           expected_tail_of_terminal_output=[
-               'Transaction 2 - Please enter type of transaction: Your session has ended'],
+           expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                             '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
            expected_output_transactions=['EOS 0000000 000 0000000 ***'])
 
 
@@ -629,9 +643,10 @@ def test_R6T5(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'withdraw', '', 'logout'],
+        terminal_input=['login', 'agent', 'withdraw', '', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -644,9 +659,10 @@ def test_R6T6(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'withdraw', '1234567', '2000', 'logout'],
+        terminal_input=['login', 'atm', 'withdraw', '1234567', '2000', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['WDR 0000000 2000 1234567 ***', 'EOS 0000000 000 0000000 ***']
     )
 
@@ -659,9 +675,10 @@ def test_R6T7(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'withdraw', '1234567', '2000', 'logout'],
+        terminal_input=['login', 'agent', 'withdraw', '1234567', '2000', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['WDR 0000000 2000 1234567 ***', 'EOS 0000000 000 0000000 ***']
     )
 
@@ -674,12 +691,14 @@ def test_R6T8(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'withdraw', '1234567', 'abcdefgh', 'logout'],
+        terminal_input=['login', 'agent', 'withdraw', '1234567', 'abcdefgh', 'logout', 'no'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Please enter \'yes\'/\'y\' if you would like to start another session or '
+                                          '\'no\'/\'n\' if not: Thank you for using Quinterac, have a nice day!'],
         # need to revisit this
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
 
 # ---------------------------------------------------- END OF Withdraw ----------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
@@ -687,6 +706,8 @@ def test_R6T8(capsys):
 
 # ---------------------------------------------------- Start of Transfer --------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
+
+
 def test_R7T1(capsys):
     """Testing R7T1: User cannot enter anything non-numeric for account number
 
@@ -695,9 +716,9 @@ def test_R7T1(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', 'abcdefgh', '2000', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '1234567', 'abcdefgh', '2000', 'logout', 'No'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
@@ -710,11 +731,13 @@ def test_R7T2(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '12345678', '8', '2000', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '12345678', '8', '2000', 'logout', 'No'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_R7T3(capsys):
     """Testing R7T3: checks that outgoing account is not blank
 
@@ -723,11 +746,13 @@ def test_R7T3(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '', '1234567', '2000', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '', '1234567', '2000', 'logout', ' '],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_R7T4(capsys):
     """Testing R7T4: checks that destination account is not blank
 
@@ -736,11 +761,13 @@ def test_R7T4(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', '', '2000', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '1234567', '', '2000', 'logout', 'No'],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_R7T5(capsys):
     """Testing R7T5: checks that account exists
 
@@ -749,11 +776,13 @@ def test_R7T5(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '2222222', '1234567', '2000', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '2222222', '1234567', '2000', 'logout', ' '],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_R7T6(capsys):
     """Testing R7T6: checks that destination account exists
 
@@ -762,142 +791,158 @@ def test_R7T6(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', '2222222', '2000', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2222222', '2000', 'logout', ' '],
         intput_valid_accounts=['1234567'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
-#test_R7T7 was based on a misunderstanding of the requirments
+
+def test_R7T7(capsys):
+    """Testing R7T7: checks that amount is not negative
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '-2000', 'logout', 'No'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
 def test_R7T8(capsys):
-    """Testing R7T8: checks that amount is not negative
+    """Testing R7T8: checks that amount is not 0
 
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '-2000', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '0', 'logout', ' '],
         intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_R7T9(capsys):
-    """Testing R7T9: checks that amount is not 0
+    """Testing R7T9: checks that transfer amount field is not empty
 
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '0', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '', 'logout', ' '],
         intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_R7T10(capsys):
-    """Testing R7T10: checks that transfer amount field is not empty
+    """Testing R7T10: checks that transfer amount entered is not non-numeric
 
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', 'aaa', 'logout', 'No'],
         intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_R7T11(capsys):
-    """Testing R7T11: checks that transfer amount entered is not non-numeric
+    """Testing R7T11: checks that valid account summary file is written
 
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', 'aaa', 'logout'],
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '2000', 'logout', ' '],
         intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']
-    )
-def test_R7T12(capsys):
-    """Testing R7T12: checks that valid account summary file is written
-
-    Arguments:
-        capsys -- object created by pytest to capture stdout and stderr
-    """
-    helper(
-        capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '2000', 'logout'],
-        intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['XFR 2345678 2000 1234567 ***', 'EOS 0000000 000 0000000 ***']
     )
 
-def test_R7T13(capsys):
-    """Testing R7T13: checks that agent can transfer money
+
+def test_R7T12(capsys):
+    """Testing R7T12: checks that agent can transfer money
 
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '2000', 'logout'],
+        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '2000', 'logout', ' '],
         intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
-        expected_output_transactions=['XFR 2345678 2000 1234567 ***','EOS 0000000 000 0000000 ***']
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['XFR 2345678 2000 1234567 ***', 'EOS 0000000 000 0000000 ***']
     )
-def test_R7T14(capsys):
-    """Testing R7T14: destination account is the same as the current account
+
+
+def test_R7T13(capsys):
+    """Testing R7T13: destination account is the same as the current account
 
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'transfer', '1234567', '1234567', '2000', 'logout'],
+        terminal_input=['login', 'agent', 'transfer', '1234567', '1234567', '2000', 'logout', ' '],
         intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
+def test_R7T14(capsys):
+    """Additional test
+    Testing R7T14: atm can only transfer less then $10000.00
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '1000001', 'logout', 'No'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+
 def test_R7T15(capsys):
     """Additional test
-    Testing R7T15: atm can only transfer less then $10000.00
+    Testing R7T15: agent can transfer more then $10000.00
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '1000001', 'logout'],
+        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '2000000', 'logout', 'No'],
         intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
-        expected_output_transactions=['EOS 0000000 000 0000000 ***']
-    )
-
-def test_R7T16(capsys):
-    """Additional test
-    Testing R7T16: agent can transfer more then $10000.00
-    Arguments:
-        capsys -- object created by pytest to capture stdout and stderr
-    """
-    helper(
-        capsys=capsys,
-        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '2000000', 'logout'],
-        intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['XFR 2345678 2000000 1234567 ***','EOS 0000000 000 0000000 ***']
     )
-def test_R7T17(capsys):
+
+
+def test_R7T16(capsys):
     """Additional test: agent cannot transfer more then $999999.99
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
     """
     helper(
         capsys=capsys,
-        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '100000000', 'logout'],
+        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '100000000', 'logout', 'No'],
         intput_valid_accounts=['1234567', '2345678'],
-        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 # ---------------------------------------------------- END OF Transfer ----------------------------------------------- #
@@ -906,6 +951,8 @@ def test_R7T17(capsys):
 
 # ---------------------------------------------------- Start of Logout ----------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
+
+
 def test_r2t1(capsys):
     """Testing R2T1: Check that you cannot logout before logging in
 
@@ -914,11 +961,13 @@ def test_r2t1(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['logout','login','atm','logout'],
+        terminal_input=['logout', 'login', 'atm', 'logout', 'No'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_r2t2(capsys):
     """Testing R2T1: Check that valid transaction summary file is written after logout
 
@@ -927,11 +976,12 @@ def test_r2t2(capsys):
     """
     helper(
         capsys=capsys,
-        terminal_input=['login','atm','logout'],
+        terminal_input=['login', 'atm', 'logout', 'no'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
 
 def test_r2t3(capsys):
     """Testing R2T3: cannot logout after logout
@@ -943,9 +993,11 @@ def test_r2t3(capsys):
         capsys=capsys,
         terminal_input=['login', 'atm', 'logout', 'logout'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_r2t4(capsys):
     """
     Testing R2T4: cannot transfer after logout.
@@ -957,9 +1009,11 @@ def test_r2t4(capsys):
         capsys=capsys,
         terminal_input=['login', 'atm', 'logout', 'transfer'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_r2t5(capsys):
     """
     Testing R2T5: cannot withdraw after logout.
@@ -971,9 +1025,11 @@ def test_r2t5(capsys):
         capsys=capsys,
         terminal_input=['login', 'atm', 'logout', 'withdraw'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_r2t6(capsys):
     """
     Testing R2T6: cannot deposit after logout.
@@ -985,9 +1041,11 @@ def test_r2t6(capsys):
         capsys=capsys,
         terminal_input=['login', 'atm', 'logout', 'deposit'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_r2t7(capsys):
     """
     Testing R2T7: cannot create account after logout.
@@ -999,9 +1057,11 @@ def test_r2t7(capsys):
         capsys=capsys,
         terminal_input=['login', 'atm', 'logout', 'createacct'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+
+
 def test_r2t8(capsys):
     """
     Testing R2T8: cannot delete account after logout.
@@ -1014,12 +1074,28 @@ def test_r2t8(capsys):
         capsys=capsys,
         terminal_input=['login', 'atm', 'logout', 'deleteacct'],
         intput_valid_accounts=['1234568'],
-        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_tail_of_terminal_output=['Thank you for using Quinterac, have a nice day!'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
 
-"""R2T9: can login after logout will not be tested. 
-in order to test, the while loop that allows users to start another session was removed to exit easily"""
+
+def test_r2t9(capsys):
+    """
+    Testing R2T9: can only login after logout.
+
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'logout', 'no', 'login', 'atm', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=["Please enter 'yes'/'y' if you would like to start another session or 'no'/'n' if not: Thank you for using Quinterac, have a nice day!"],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***', 'EOS 0000000 000 0000000 ***']
+    )
+
+
 # ---------------------------------------------------- End of Logout ----------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
 
