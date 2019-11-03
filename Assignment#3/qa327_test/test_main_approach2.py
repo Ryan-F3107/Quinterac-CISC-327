@@ -849,7 +849,7 @@ def test_R7T13(capsys):
         expected_output_transactions=['XFR 2345678 2000 1234567 ***','EOS 0000000 000 0000000 ***']
     )
 def test_R7T14(capsys):
-    """Testing R7T14: checks that agent can transfer money
+    """Testing R7T14: destination account is the same as the current account
 
     Arguments:
         capsys -- object created by pytest to capture stdout and stderr
@@ -861,15 +861,165 @@ def test_R7T14(capsys):
         expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
         expected_output_transactions=['EOS 0000000 000 0000000 ***']
     )
+def test_R7T15(capsys):
+    """Additional test
+    Testing R7T15: atm can only transfer less then $10000.00
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'transfer', '1234567', '2345678', '1000001', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
 
+def test_R7T16(capsys):
+    """Additional test
+    Testing R7T16: agent can transfer more then $10000.00
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '2000000', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['XFR 2345678 2000000 1234567 ***','EOS 0000000 000 0000000 ***']
+    )
+def test_R7T17(capsys):
+    """Additional test: agent cannot transfer more then $999999.99
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'agent', 'transfer', '1234567', '2345678', '100000000', 'logout'],
+        intput_valid_accounts=['1234567', '2345678'],
+        expected_tail_of_terminal_output=['Transaction 2 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
 # ---------------------------------------------------- END OF Transfer ----------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
 
 
 # ---------------------------------------------------- Start of Logout ----------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
+def test_r2t1(capsys):
+    """Testing R2T1: Check that you cannot logout before logging in
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['logout','login','atm','logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_r2t2(capsys):
+    """Testing R2T1: Check that valid transaction summary file is written after logout
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login','atm','logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+def test_r2t3(capsys):
+    """Testing R2T3: cannot logout after logout
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'logout', 'logout'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_r2t4(capsys):
+    """
+    Testing R2T4: cannot transfer after logout.
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'logout', 'transfer'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_r2t5(capsys):
+    """
+    Testing R2T5: cannot withdraw after logout.
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'logout', 'withdraw'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_r2t6(capsys):
+    """
+    Testing R2T6: cannot deposit after logout.
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'logout', 'deposit'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_r2t7(capsys):
+    """
+    Testing R2T7: cannot create account after logout.
+
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'logout', 'createacct'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+def test_r2t8(capsys):
+    """
+    Testing R2T8: cannot delete account after logout.
 
 
+    Arguments:
+        capsys -- object created by pytest to capture stdout and stderr
+    """
+    helper(
+        capsys=capsys,
+        terminal_input=['login', 'atm', 'logout', 'deleteacct'],
+        intput_valid_accounts=['1234568'],
+        expected_tail_of_terminal_output=['Transaction 1 - Please enter type of transaction: Your session has ended'],
+        expected_output_transactions=['EOS 0000000 000 0000000 ***']
+    )
+
+"""R2T9: can login after logout will not be tested. 
+in order to test, the while loop that allows users to start another session was removed to exit easily"""
 # ---------------------------------------------------- End of Logout ----------------------------------------------- #
 # -------------------------------------------------------------------------------------------------------------------- #
 
