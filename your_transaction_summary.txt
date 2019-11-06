@@ -1,0 +1,4 @@
+NEW 5656 0000 5656 bubu
+XFR 1234 0100 5656 mumu
+DEL 5656 0000 5656 bubu
+EOS xxxx xxxx xxxx xxxx
