@@ -23,16 +23,82 @@ def readMaster():
     with open(masterFileDir) as masterFile:
         masterList = masterFile.read().splitlines()
 
-
-        for y in masterList:
-            eachAccount = y.split()
+        for line in masterList:
+            eachAccount = line.split()
             accountNum = eachAccount[0]
             accountBalance = eachAccount[1]
             accountName = eachAccount[2]
-
+            try:
+                a=int(accountNum)
+                b = int(accountBalance)
+            except ValueError:
+                exit("Fatal ERROR")
             masterAccountDict[accountNum] = [accountBalance, accountName]
 
     return masterAccountDict   # returns the accounts as objects in a list
+
+
+def deposit(masterAccountDict, accountNum, amount):
+    # see how much money they have
+    moneyHave = masterAccountDict[accountNum][0]  # check if this should be toAccount or accountNum
+
+    # add it to the amount they want to deposit
+    moneyHave = int(moneyHave) + int(amount)
+
+    # not sure if we need this since they are depositing
+    if moneyHave < 0:
+        print("Do not have enough funds!")
+        return
+    # store new amount of money back into the dictionary
+    masterAccountDict[accountNum][0] = str(moneyHave)
+
+
+def withdraw(masterAccountDict, accountNum, amount):
+    # see how much money they have
+    moneyHave = masterAccountDict[accountNum][0]  # check if this should be toAccount or accountNum
+    # subtract it by the amount they want to withdraw
+    moneyHave = int(moneyHave) - int(amount)
+    if moneyHave < 0:
+        print("Do not have enough funds!")
+        return
+    # store new amount of money back into the dictionary
+    masterAccountDict[accountNum][0] = str(moneyHave)
+
+
+def transfer(masterAccountDict, destAccount, fromAccount, amount):
+    # get money in first account
+    moneyHave = masterAccountDict[fromAccount][0]
+
+    # subtract how much they have to how much they want to transfer
+    moneyHave = int(moneyHave) - int(amount)
+
+    if moneyHave < 0:
+        print("Do not have enough funds!")
+        return
+
+    # store new amount of money back into the dictionary
+    masterAccountDict[fromAccount][0] = str(moneyHave)
+
+    # add to money they have to how much they were transferred
+    moneyHave2 = int(masterAccountDict[destAccount][0]) + int(amount)
+
+    # store new amount of money back into the dictionary
+    masterAccountDict[destAccount][0]  = str(moneyHave2)
+
+
+"""
+Constraints:
+- each line is at most 47 characters (plus newline)
+- items are separated by exactly one space
+- account numbers, monetary amounts, and account names are as described
+ for the transaction summary file above
+- the Master Accounts File must always be kept in descending order by
+ account number
+ """
+def writeMaster():
+    b=1
+    return
+
 
 def main():
     #read dictionary that has account number, account balance and account name
@@ -44,86 +110,44 @@ def main():
     for x in transactionList:  #goes through a list of transactions
         eachTransaction = x.split()
         transCode = eachTransaction[0]
-        accountNum = eachTransaction[1]
+        if transCode!="NEW":
+            try:
+                masterAccountDict[accountNum]
+            except KeyError:
+                print("There is no such account!")
+                exit("Fatal ERROR")
+
+        accountNum = eachTransaction[1] #also destAccount
         amount = eachTransaction[2]
-        toAccount = eachTransaction[3]
+        fromAccount = eachTransaction[3]
         accountName = eachTransaction[4]
 
-        #do things related to deposit
         if transCode == "DEP":
-            store = masterAccountDict[toAccount]  #check if this should be toAccount or accountNum
-            #see how much money they have
-            moneyHave = store[0]
-            #add it to the amount they want to deposit
-            moneyHave = int(moneyHave) + int(amount)
-
-            #not sure if we need this since they are depositing
-            if moneyHave < 0:
-                print("Do not have enough funds!")
-
-            # store new amount of money back into the dictionary
-            store[0] = str(moneyHave)
-
-        if transCode == "WDR":
-            store = masterAccountDict[toAccount]  # check if this should be toAccount or accountNum
-            # see how much money they have
-            moneyHave = store[0]
-            # subtract it by the amount they want to withdraw
-            moneyHave = int(moneyHave) - int(amount)
-
-            if moneyHave < 0:
-                print("Do not have enough funds!")
-
-            # store new amount of money back into the dictionary
-            store[0] = str(moneyHave)
-
-        if transCode == "XFR":
-            store = masterAccountDict[accountNum]
-            # get money in first account
-            moneyHave = store[0]
-            #subtract how much they have to how much they want to transfer
-            moneyHave = int(moneyHave) - int(amount)
-
-            if moneyHave < 0:
-                print("Do not have enough funds!")
-
-            # store new amount of money back into the dictionary
-            store[0] = str(moneyHave)
-
-            # get money in second account
-            store2 = masterAccountDict[toAccount]
-            moneyHave2 = store2[0]
-            #add to money they have to how much they transferred
-            moneyHave2 = int(moneyHave2) + int(amount)
-
-            if moneyHave2 < 0:
-                print("Do not have enough funds!")
-
-
-            # store new amount of money back into the dictionary
-            store[0] = str(moneyHave2)
-
-        if transCode == "NEW":
+            deposit(masterAccountDict, accountNum, amount)
+        elif transCode == "WDR":
+            withdraw(masterAccountDict, accountNum, amount)
+        elif transCode == "XFR":
+            transfer(masterAccountDict, accountNum, fromAccount, amount)
+        elif transCode == "NEW":
             if accountNum in masterAccountDict:
                 print("Please enter new account number, this one is taken!")
             else:
                 #it says no transactions should be accepted when making a new account, so I just set the amount to 0000
                 masterAccountDict[accountNum] = ["0000", accountName]
-        if transCode == "DEL":
-            store = masterAccountDict[accountNum]
-            accountNameMaster = store[1]
-            accountBalance = store[0]
-
+        elif transCode == "DEL":
+            accountNameMaster = masterAccountDict[accountNum][1]
+            accountBalance = masterAccountDict[accountNum][0]
             if accountNameMaster != accountName:
                 print("names do not match!")
             elif accountBalance != 0:
                 print("account balance is not zero, it has to be zero!")
             else:
+                print("deleting account")
                 del masterAccountDict[accountNum]
 
 
 
-        if transCode == "EOS":
+        elif transCode == "EOS":
             pass
 
 
