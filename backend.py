@@ -1,10 +1,10 @@
 """
 CISC 327 - Assignment 4
 
-This program simulates the backend office of Quinterac, a text-based ATM system.
+This program simulates the backend office of Quinterac.
 
 The input files are the Transaction Summary File and the Master Account File
-The Generated out put file is the New Master Account file and the Valid Account List File
+The generated output file is the New Master Account file and the Valid Account List File
 
 The program intends to take in the two input files, modify the master account file based on the content from
 the Merged Transaction Summary File and generate the New Valid Account list and new master account list,
