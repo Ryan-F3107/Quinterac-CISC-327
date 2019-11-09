@@ -1,6 +1,15 @@
 """
 CISC 327 - Assignment 4
-This program simulates the backend office of Quinterac, a text-based ATM system
+
+This program simulates the backend office of Quinterac, a text-based ATM system.
+
+The input files are the Transaction Summary File and the Master Account File
+The Generated out put file is the New Master Account file and the Valid Account List File
+
+The program intends to take in the two input files, modify the master account file based on the content from
+the Merged Transaction Summary File and generate the New Valid Account list and new master account list,
+for this program, it will run starting from the main function within the backend.py file.
+
 Authors:
         Anna Chulukov, 17avc2@queensu.ca, 20082947
         Faranak Sharifi, 17fsb@queensu.ca, 20068900
@@ -54,7 +63,7 @@ adds the content from the master account dictionary into the file with the right
 def writeMaster(masterAccountDict):
     masterAccountFile = open(sys.argv[2], "w")
     for accountNum in sorted(masterAccountDict.keys()):
-        masterAccountFile.write(accountNum + " " + masterAccountDict[accountNum][0] + " " + \
+        masterAccountFile.write(accountNum + " " + masterAccountDict[accountNum][0] + " " +
                                 masterAccountDict[accountNum][1] + "\n")
 
 
@@ -78,7 +87,7 @@ def deposit(masterAccountDict, accountNum, amount):
     moneyHave = masterAccountDict[accountNum][0]  # check if this should be toAccount or accountNum
     # add it to the amount they want to deposit
     moneyHave = int(moneyHave) + int(amount)
-    masterAccountDict[accountNum][0] = str(moneyHave)
+    masterAccountDict[accountNum][0] = str(moneyHave)   #   masterAccountDict's modified based on TransactionSummaryFile
 
 
 '''This function takes in the master account dictionary, an account number and an amount and update's that user's 
@@ -167,8 +176,6 @@ def main():
         amount = eachTransaction[2]
         fromAccount = eachTransaction[3]
         accountName = eachTransaction[4]
-        print(fromAccount)
-
         if transCode != "NEW" and transCode != "EOS":  #   Checks if account exists or not
             if fromAccount == "0000000" and toaccountNum == "0000000" :
                 print("There is no such account: " + fromAccount)
