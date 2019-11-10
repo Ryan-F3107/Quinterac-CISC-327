@@ -121,7 +121,9 @@ def main():
         accountName = eachTransaction[4]
 
         if transCode == "DEP":
+            print(masterAccountDict[accountNum])
             masterAccountDict=deposit(masterAccountDict, accountNum, amount)
+            print(masterAccountDict[accountNum])
         elif transCode == "WDR":
             masterAccountDict=withdraw(masterAccountDict, accountNum, amount)
         elif transCode == "XFR":
@@ -147,8 +149,8 @@ def main():
                 print(accountNum + " was deleted")
         elif transCode == "EOS":
             pass
-    for i in masterAccountDict:
-        print(masterAccountDict[i])
+    #for i in masterAccountDict:
+    #    print(masterAccountDict[i])
 
 
 main()

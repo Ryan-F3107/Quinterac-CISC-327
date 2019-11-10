@@ -149,9 +149,13 @@ and updates the master account dictionary, removing the deleted account from the
 
 def deleteAccount(masterAccountDict,accountNum,accountName):
     accountNameMaster = masterAccountDict[accountNum][1]
+    accountBalance = masterAccountDict[accountNum][0]
     if accountNameMaster != accountName:
         print("names do not match!")
+    #elif int(accountBalance) != 0:
+    #    print("account balance is not zero, it has to be zero!")
     else:
+        print("deleting account")
         del masterAccountDict[accountNum]   #   Deletes the account from the master account dictionary
     return masterAccountDict
 
@@ -161,6 +165,8 @@ def main():
 
     # read transactions in a list
     transactionList = readTransFile()
+    for i in masterAccountDict:
+        print(masterAccountDict[i])
     for x in transactionList:  # goes through a list of transactions
         eachTransaction = x.split()
         #  Each part of the Transaction Summary line is assigned a variable.
@@ -174,18 +180,38 @@ def main():
                 print("There is no such account: " + fromAccount)
                 exit("Fatal ERROR")
         if transCode == "DEP":
+            print("dep")
+            print(masterAccountDict[toAccount])
             masterAccountDict=deposit(masterAccountDict, toAccount, amount)
+            print(masterAccountDict[toAccount])
         elif transCode == "WDR":
+            print("wdr")
+            print(masterAccountDict[fromAccount])
             masterAccountDict=withdraw(masterAccountDict, fromAccount, amount)
+            print(masterAccountDict[fromAccount])
         elif transCode == "XFR":
+            print("xfr")
+            print(masterAccountDict[fromAccount])
+            print(masterAccountDict[toAccount])
             masterAccountDict=transfer(masterAccountDict, toAccount, fromAccount, amount)
+            print(masterAccountDict[fromAccount])
+            print(masterAccountDict[toAccount])
         elif transCode == "NEW":
+            print("new")
             masterAccountDict=createAccount(masterAccountDict, toAccount, accountName)
+            print(masterAccountDict[toAccount])
+            print(toAccount)
         elif transCode == "DEL":
+            print("del")
+            print(masterAccountDict[toAccount])
+            print(toAccount)
             masterAccountDict=deleteAccount(masterAccountDict, toAccount, accountName)
         elif transCode == "EOS":    #   occurs when we have reached the end of transaction summary file
             #   Calls write master accounts file
             writeMaster(masterAccountDict)
             newValidAccountList(masterAccountDict)
+        print("\n")
+        #for i in masterAccountDict:
+        #    print(masterAccountDict[i])
 
 main()

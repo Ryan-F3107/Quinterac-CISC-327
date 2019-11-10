@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b842828f-50e3-456a-bcb1-fc435181d1a3" name="Default Changelist" comment="">
+    <list default="true" id="b842828f-50e3-456a-bcb1-fc435181d1a3" name="Default Changelist" comment="anyas work">
+      <change afterPath="$PROJECT_DIR$/my old basckenbackend.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment#3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment#3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment#3/qa327/your_transaction_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment#3/qa327/your_transaction_summary.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_Version0_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend_Version0_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master_accounts_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/master_accounts_file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/your_transaction_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/your_transaction_summary.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,17 +22,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="140" column="12" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="12" />
+            <state relative-caret-position="216">
+              <caret line="163" selection-start-line="163" selection-end-line="163" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/master_accounts_file_copy.txt">
+        <entry file="file://$PROJECT_DIR$/my old basckenbackend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="60" selection-start-column="60" selection-end-column="60" />
+            <state relative-caret-position="5859">
+              <caret line="217" lean-forward="true" selection-start-line="217" selection-end-line="217" />
             </state>
           </provider>
         </entry>
@@ -34,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/your_transaction_summary.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+            <state relative-caret-position="108">
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -43,19 +49,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/master_accounts_file.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" column="7" selection-start-line="3" selection-end-line="3" selection-end-column="7" />
+            <state relative-caret-position="27">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/valid_account_list.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>masterAccountDict</find>
       <find>readMaster</find>
       <find>it has to</find>
+      <find>1234567</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -64,9 +87,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/master_accounts_file.txt" />
         <option value="$PROJECT_DIR$/master_accounts_file_copy.txt" />
+        <option value="$PROJECT_DIR$/backend_Version0_1.py" />
         <option value="$PROJECT_DIR$/your_transaction_summary.txt" />
+        <option value="$PROJECT_DIR$/master_accounts_file.txt" />
+        <option value="$PROJECT_DIR$/valid_account_list.txt" />
+        <option value="$PROJECT_DIR$/my old basckenbackend.py" />
         <option value="$PROJECT_DIR$/backend.py" />
       </list>
     </option>
@@ -90,6 +116,11 @@
               <item name="Quinterac-CISC-327" type="b2602c69:ProjectViewProjectNode" />
               <item name="Quinterac-CISC-327" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Quinterac-CISC-327" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quinterac-CISC-327" type="462c0819:PsiDirectoryNode" />
+              <item name="my backend" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -97,6 +128,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment#3" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -116,7 +148,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.backend">
     <configuration name="backend" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Quinterac-CISC-327" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,9 +170,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="my old basckenbackend" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Quinterac-CISC-327" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my old basckenbackend.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.backend" />
+        <item itemvalue="Python.my old basckenbackend" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573232324817</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="anyas work">
+      <created>1573232373897</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573232373897</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -185,7 +246,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32934928" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.32934928" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.41035858" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.3997344" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -264,24 +325,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master_accounts_file.txt">
+    <entry file="file://$PROJECT_DIR$/backend_Version0_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="7" selection-start-line="3" selection-end-line="3" selection-end-column="7" />
+        <state relative-caret-position="108">
+          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/valid_account_list.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/your_transaction_summary.txt">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master_accounts_file.txt">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my old basckenbackend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5859">
+          <caret line="217" lean-forward="true" selection-start-line="217" selection-end-line="217" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="140" column="12" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="12" />
+        <state relative-caret-position="216">
+          <caret line="163" selection-start-line="163" selection-end-line="163" />
         </state>
       </provider>
     </entry>
