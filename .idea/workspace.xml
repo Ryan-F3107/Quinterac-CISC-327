@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b842828f-50e3-456a-bcb1-fc435181d1a3" name="Default Changelist" comment="anyas work">
-      <change afterPath="$PROJECT_DIR$/my old basckenbackend.py" afterDir="false" />
+    <list default="true" id="b842828f-50e3-456a-bcb1-fc435181d1a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment#3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment#3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment#3/qa327/your_transaction_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment#3/qa327/your_transaction_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend_Version0_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend_Version0_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master_accounts_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/master_accounts_file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/your_transaction_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/your_transaction_summary.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,53 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="163" selection-start-line="163" selection-end-line="163" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my old basckenbackend.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5859">
-              <caret line="217" lean-forward="true" selection-start-line="217" selection-end-line="217" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/your_transaction_summary.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="23" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/master_accounts_file.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/valid_account_list.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -89,11 +36,11 @@
       <list>
         <option value="$PROJECT_DIR$/master_accounts_file_copy.txt" />
         <option value="$PROJECT_DIR$/backend_Version0_1.py" />
-        <option value="$PROJECT_DIR$/your_transaction_summary.txt" />
         <option value="$PROJECT_DIR$/master_accounts_file.txt" />
         <option value="$PROJECT_DIR$/valid_account_list.txt" />
         <option value="$PROJECT_DIR$/my old basckenbackend.py" />
         <option value="$PROJECT_DIR$/backend.py" />
+        <option value="$PROJECT_DIR$/your_transaction_summary.txt" />
       </list>
     </option>
   </component>
@@ -108,7 +55,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,16 +65,22 @@
             <path>
               <item name="Quinterac-CISC-327" type="b2602c69:ProjectViewProjectNode" />
               <item name="Quinterac-CISC-327" type="462c0819:PsiDirectoryNode" />
+              <item name="Assignment#3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quinterac-CISC-327" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quinterac-CISC-327" type="462c0819:PsiDirectoryNode" />
               <item name="my backend" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment#3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment#4" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -230,15 +182,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573232373897</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="anyas work">
+      <created>1573357203530</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573357203530</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.1685678" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1685678" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -246,7 +204,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32934928" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.41035858" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.41035858" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.3997344" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -318,52 +276,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="anyas work" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/master_accounts_file_copy.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="60" selection-start-column="60" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend_Version0_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/master_accounts_file_copy.txt" />
+    <entry file="file://$PROJECT_DIR$/backend_Version0_1.py" />
+    <entry file="file://$PROJECT_DIR$/master_accounts_file.txt" />
+    <entry file="file://$PROJECT_DIR$/my old basckenbackend.py" />
+    <entry file="file://$PROJECT_DIR$/backend.py" />
+    <entry file="file://$PROJECT_DIR$/your_transaction_summary.txt" />
     <entry file="file://$PROJECT_DIR$/valid_account_list.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/your_transaction_summary.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/master_accounts_file.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my old basckenbackend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5859">
-          <caret line="217" lean-forward="true" selection-start-line="217" selection-end-line="217" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="163" selection-start-line="163" selection-end-line="163" />
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

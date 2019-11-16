@@ -155,6 +155,50 @@ def deleteAccount(masterAccountDict,accountNum,accountName):
         del masterAccountDict[accountNum]   #   Deletes the account from the master account dictionary
     return masterAccountDict
 
+
+def checkForError(masterAccountDict, transCode, toAccount, amount, fromAccount, accountName):
+    if transCode != "NEW" and transCode != "EOS":  # Checks if account exists or not
+        # if fromAccount == "0000000" and toAccount == "0000000":
+        #     print("There is no such account: " + fromAccount)
+        #     exit("Fatal ERROR")
+        if transCode=="XFR":
+            try:
+                masterAccountDict[fromAccount]
+                masterAccountDict[toAccount]
+            except KeyError:
+                print("Cannot transfer!")
+                exit("Fatal ERROR")
+        elif transCode=="WDR":
+            try:
+                masterAccountDict[fromAccount]
+            except KeyError:
+                print("There is no such account: " + fromAccount)
+                exit("Fatal ERROR")
+        else:
+            try:
+                masterAccountDict[toAccount]
+            except KeyError:
+                print("There is no such account: " + toAccount)
+                exit("Fatal ERROR")
+    elif transCode == "NEW":
+        if toAccount=="0000000":
+            print("cannot create account 0000000")
+            exit("Fatal ERROR")
+    try:
+        if float(amount)<0:
+            print("Negative amount invalid")
+            exit("Fatal ERROR")
+    except ValueError:
+        print("amount is not numerical")
+        exit("Fatal ERROR")
+    if len(accountName)>=40:
+        print("name is too long")
+        exit("Fatal ERROR")
+
+
+
+
+
 def main():
     # read dictionary that has account number, account balance and account name
     masterAccountDict = readMaster()
@@ -169,10 +213,7 @@ def main():
         amount = eachTransaction[2]
         fromAccount = eachTransaction[3]
         accountName = eachTransaction[4]
-        if transCode != "NEW" and transCode != "EOS":  #   Checks if account exists or not
-            if fromAccount == "0000000" and toAccount == "0000000":
-                print("There is no such account: " + fromAccount)
-                exit("Fatal ERROR")
+        checkForError(masterAccountDict,transCode, toAccount, amount, fromAccount, accountName)
         if transCode == "DEP":
             masterAccountDict=deposit(masterAccountDict, toAccount, amount)
         elif transCode == "WDR":
