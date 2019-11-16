@@ -33,16 +33,22 @@ def readTransFile():
 
 '''This function takes in the second argument of the program, the master accounts file, and returns it as a 
 dictionary '''
+
+
 def readMaster():
     masterAccountDict = {}
     masterFileDir = sys.argv[2]
     with open(masterFileDir) as masterFile:
         masterList = masterFile.read().splitlines()
         for line in masterList:
-            eachAccount = line.split()
-            accountNum = eachAccount[0]
-            accountBalance = eachAccount[1]
-            accountName = eachAccount[2]
+            if len(line) >= 47:
+                print("The master account line is not within its boundaries: " + line)
+                exit("Fatal Error")
+            else:
+                eachAccount = line.split()
+                accountNum = eachAccount[0]
+                accountBalance = eachAccount[1]
+                accountName = eachAccount[2]
             try:    # checks if the values are of the right data type
                 int(accountNum)
                 int(accountBalance)
@@ -87,6 +93,7 @@ def deposit(masterAccountDict, accountNum, amount):
     moneyHave = int(moneyHave) + int(amount)
     masterAccountDict[accountNum][0] = str(moneyHave)   #   masterAccountDict's modified based on TransactionSummaryFile
     return masterAccountDict
+
 
 '''This function takes in the master account dictionary, an account number and an amount and update's that user's 
 account with the amount they want to withdraw'''
@@ -161,6 +168,8 @@ def checkForError(masterAccountDict, transCode, toAccount, amount, fromAccount, 
         # if fromAccount == "0000000" and toAccount == "0000000":
         #     print("There is no such account: " + fromAccount)
         #     exit("Fatal ERROR")
+
+
         if transCode=="XFR":
             try:
                 masterAccountDict[fromAccount]
@@ -196,9 +205,6 @@ def checkForError(masterAccountDict, transCode, toAccount, amount, fromAccount, 
         exit("Fatal ERROR")
 
 
-
-
-
 def main():
     # read dictionary that has account number, account balance and account name
     masterAccountDict = readMaster()
@@ -228,5 +234,6 @@ def main():
             #   Calls write master accounts file
             writeMaster(masterAccountDict)
             newValidAccountList(masterAccountDict)
+
 
 main()
