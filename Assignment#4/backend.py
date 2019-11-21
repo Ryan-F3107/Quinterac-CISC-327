@@ -33,16 +33,22 @@ def readTransFile():
 
 '''This function takes in the second argument of the program, the master accounts file, and returns it as a 
 dictionary '''
+
+
 def readMaster():
     masterAccountDict = {}
     masterFileDir = sys.argv[2]
     with open(masterFileDir) as masterFile:
         masterList = masterFile.read().splitlines()
         for line in masterList:
-            eachAccount = line.split()
-            accountNum = eachAccount[0]
-            accountBalance = eachAccount[1]
-            accountName = eachAccount[2]
+            if len(line) >= 47:
+                print("The master account line is not within its boundaries: " + line)
+                exit("Fatal Error")
+            else:
+                eachAccount = line.split()
+                accountNum = eachAccount[0]
+                accountBalance = eachAccount[1]
+                accountName = eachAccount[2]
             try:    # checks if the values are of the right data type
                 int(accountNum)
                 int(accountBalance)
@@ -88,6 +94,7 @@ def deposit(masterAccountDict, accountNum, amount):
     masterAccountDict[accountNum][0] = str(moneyHave)   #   masterAccountDict's modified based on TransactionSummaryFile
     return masterAccountDict
 
+
 '''This function takes in the master account dictionary, an account number and an amount and update's that user's 
 account with the amount they want to withdraw'''
 
@@ -129,6 +136,7 @@ def transfer(masterAccountDict, destAccount, fromAccount, amount):
     masterAccountDict[destAccount][0] = str(moneyHave2)
     return masterAccountDict
 
+
 '''This function takes in the master account dictionary, an account Number and account name 
 and updates the master account dictionary, adding a new account into the master accounts file
 '''
@@ -141,6 +149,7 @@ def createAccount(masterAccountDict,accountNum,accountName):
         # Since no other transaction is accepted after an account is created, the new accounts balance is $0.00
         masterAccountDict[accountNum] = ["000", accountName]
     return masterAccountDict
+
 
 '''This function takes in the master account dictionary, an account Number and account name 
 and updates the master account dictionary, removing the deleted account from the master accounts file
@@ -158,17 +167,14 @@ def deleteAccount(masterAccountDict,accountNum,accountName):
 
 def checkForError(masterAccountDict, transCode, toAccount, amount, fromAccount, accountName):
     if transCode != "NEW" and transCode != "EOS":  # Checks if account exists or not
-        # if fromAccount == "0000000" and toAccount == "0000000":
-        #     print("There is no such account: " + fromAccount)
-        #     exit("Fatal ERROR")
-        if transCode=="XFR":
+        if transCode == "XFR":
             try:
                 masterAccountDict[fromAccount]
                 masterAccountDict[toAccount]
             except KeyError:
                 print("Cannot transfer!")
                 exit("Fatal ERROR")
-        elif transCode=="WDR":
+        elif transCode == "WDR":
             try:
                 masterAccountDict[fromAccount]
             except KeyError:
@@ -181,22 +187,19 @@ def checkForError(masterAccountDict, transCode, toAccount, amount, fromAccount, 
                 print("There is no such account: " + toAccount)
                 exit("Fatal ERROR")
     elif transCode == "NEW":
-        if toAccount=="0000000":
+        if toAccount == "0000000":
             print("cannot create account 0000000")
             exit("Fatal ERROR")
     try:
-        if float(amount)<0:
+        if float(amount) < 0:
             print("Negative amount invalid")
             exit("Fatal ERROR")
     except ValueError:
         print("amount is not numerical")
         exit("Fatal ERROR")
-    if len(accountName)>=40:
+    if len(accountName) >= 40:
         print("name is too long")
         exit("Fatal ERROR")
-
-
-
 
 
 def main():
@@ -228,5 +231,6 @@ def main():
             #   Calls write master accounts file
             writeMaster(masterAccountDict)
             newValidAccountList(masterAccountDict)
+
 
 main()
