@@ -41,7 +41,7 @@ def readMaster():
     with open(masterFileDir) as masterFile:
         masterList = masterFile.read().splitlines()
         for line in masterList:
-            if len(line) >= 47:
+            if len(line) >= 48:
                 print("The master account line is not within its boundaries: " + line)
                 exit("Fatal Error")
             else:
@@ -101,8 +101,7 @@ account with the amount they want to withdraw'''
 
 def withdraw(masterAccountDict, accountNum, amount):
     # see how much money they have
-    moneyHave = masterAccountDict[accountNum][0]  # check if this should be toAccount or accountNum
-
+    moneyHave = masterAccountDict[accountNum][0]
     # subtract it by the amount they want to withdraw
     moneyHave = int(moneyHave) - int(amount)
     if moneyHave < 0:
@@ -154,8 +153,6 @@ def createAccount(masterAccountDict,accountNum,accountName):
 '''This function takes in the master account dictionary, an account Number and account name 
 and updates the master account dictionary, removing the deleted account from the master accounts file
 '''
-
-
 def deleteAccount(masterAccountDict,accountNum,accountName):
     accountNameMaster = masterAccountDict[accountNum][1]
     if accountNameMaster != accountName:
@@ -164,7 +161,10 @@ def deleteAccount(masterAccountDict,accountNum,accountName):
         del masterAccountDict[accountNum]   #   Deletes the account from the master account dictionary
     return masterAccountDict
 
-
+'''
+This function checks that all the input for validity. 
+if something is wrong (invalid input or account number which is not new does not exist in dictionairy)
+'''
 def checkForError(masterAccountDict, transCode, toAccount, amount, fromAccount, accountName):
     if transCode != "NEW" and transCode != "EOS":  # Checks if account exists or not
         if transCode == "XFR":
@@ -190,6 +190,15 @@ def checkForError(masterAccountDict, transCode, toAccount, amount, fromAccount, 
         if toAccount == "0000000":
             print("cannot create account 0000000")
             exit("Fatal ERROR")
+        #checks that account number is numeric and valid
+        try:
+            if int(toAccount) > 9999999:
+                print("Account number is too large")
+                exit("Fatal ERROR")
+        except ValueError:
+            print("Account number is non-numeric")
+            exit("Fatal ERROR")
+    #checks that amount is numeric and positive
     try:
         if float(amount) < 0:
             print("Negative amount invalid")
@@ -197,6 +206,7 @@ def checkForError(masterAccountDict, transCode, toAccount, amount, fromAccount, 
     except ValueError:
         print("amount is not numerical")
         exit("Fatal ERROR")
+
     if len(accountName) >= 40:
         print("name is too long")
         exit("Fatal ERROR")
