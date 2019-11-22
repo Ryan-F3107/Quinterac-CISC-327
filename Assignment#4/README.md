@@ -10,7 +10,7 @@ the Merged Transaction Summary File and generate the New Valid Account list and 
 for this program, it will run starting from the main function within the backend.py file.
 
 Assignment 5:
-The two pdf for assignment 5 is in the folder.
+The two pdf regarding white box testing of createAccount and withdrawAccount is included in this folder, for Assignment 5
 
 Authors:
         Anna Chulukov, 17avc2@queensu.ca, 20082947      |
