@@ -9,6 +9,9 @@ The program intends to take in the two input files, modify the master account fi
 the Merged Transaction Summary File and generate the New Valid Account list and new master account list,
 for this program, it will run starting from the main function within the backend.py file.
 
+Assignment 5:
+The two pdf for assignment 5 is in the folder.
+
 Authors:
         Anna Chulukov, 17avc2@queensu.ca, 20082947      |
         Faranak Sharifi, 17fsb@queensu.ca, 20068900     |
