@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b842828f-50e3-456a-bcb1-fc435181d1a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7769af00-a12e-4b0e-92df-ca47ed1915b0" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,7 +9,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assingment 6/test_ass6.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="783">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -22,25 +33,56 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>masterAccountDict</find>
+      <find>accountsList</find>
+      <find>sys.arg</find>
+      <find>sys.argv</find>
+      <find>transfer</find>
+      <find>delete account</find>
+      <find>delete</find>
+      <find>sys</find>
+      <find>sys.</find>
+      <find>parameters</find>
+      <find>valid_</find>
+      <find>valid_account_li</find>
+      <find>valid_account_list_file</find>
+      <find>terminal_input</find>
+      <find>capsys</find>
+      <find>read</find>
+      <find>master</find>
+      <find>argv</find>
+      <find>cannot create account</find>
+      <find>toAcctNum,</find>
+      <find>[1]</find>
+      <find>[2]</find>
+      <find>w</find>
+      <find>storeTransactionCode</find>
       <find>readMaster</find>
-      <find>it has to</find>
-      <find>1234567</find>
+      <find>create</find>
+      <find>deleteAccount</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/master_accounts_file_copy.txt" />
-        <option value="$PROJECT_DIR$/backend_Version0_1.py" />
-        <option value="$PROJECT_DIR$/master_accounts_file.txt" />
-        <option value="$PROJECT_DIR$/valid_account_list.txt" />
-        <option value="$PROJECT_DIR$/my old basckenbackend.py" />
-        <option value="$PROJECT_DIR$/backend.py" />
-        <option value="$PROJECT_DIR$/your_transaction_summary.txt" />
+        <option value="$PROJECT_DIR$/qa327/your_account_list_file.txt" />
+        <option value="$PROJECT_DIR$/qa327_test/T1.txt" />
+        <option value="$PROJECT_DIR$/qa327_test/T2.txt" />
+        <option value="$PROJECT_DIR$/qa327_test/test_main_approach2.py" />
+        <option value="$PROJECT_DIR$/qa327/__main__.py" />
+        <option value="$PROJECT_DIR$/qa327_test/backend_test.py" />
+        <option value="$PROJECT_DIR$/qa327_test/test_ass6.py" />
+        <option value="$PROJECT_DIR$/qa327_test/daily_script.py" />
+        <option value="$PROJECT_DIR$/qa327/backend2.py" />
+        <option value="$PROJECT_DIR$/qa327/your_transaction_summary.txt" />
+        <option value="$PROJECT_DIR$/qa327/app.py" />
+        <option value="$PROJECT_DIR$/qa327/merged_transaction_summary.txt" />
+        <option value="$PROJECT_DIR$/qa327/daily_script.py" />
+        <option value="$PROJECT_DIR$/qa327/backend.py" />
+        <option value="$PROJECT_DIR$/qa327/test_ass6.py" />
+        <option value="$PROJECT_DIR$/Assingment 6/test_ass6.py" />
       </list>
     </option>
   </component>
@@ -49,7 +91,8 @@
     <option name="width" value="851" />
     <option name="height" value="877" />
   </component>
-  <component name="ProjectId" id="1SejwVXFQ2AMAzYRAbc6zqvSBUt" />
+  <component name="ProjectId" id="1StZ1mr4vgRcCk5MuojK0s5LBl5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -59,18 +102,18 @@
         <subPane>
           <expand>
             <path>
-              <item name="Quinterac-CISC-327" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Quinterac-CISC-327" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Quinterac-CISC-327" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Quinterac-CISC-327" type="462c0819:PsiDirectoryNode" />
+              <item name="Assignment#3" type="b2602c69:ProjectViewProjectNode" />
               <item name="Assignment#3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Quinterac-CISC-327" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Quinterac-CISC-327" type="462c0819:PsiDirectoryNode" />
-              <item name="my backend" type="462c0819:PsiDirectoryNode" />
+              <item name="Assignment#3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment#3" type="462c0819:PsiDirectoryNode" />
+              <item name="Assingment 6" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Assignment#3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment#3" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -80,13 +123,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment#4" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\anna\Documents\__University\CISC 327\a3\git\Quinterac-CISC-327" />
-    </key>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -101,20 +139,20 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.backend">
-    <configuration name="backend" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Quinterac-CISC-327" />
+    <configuration name="__main__" type="PythonConfigurationType" factoryName="Python">
+      <module name="V3.0.1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/qa327" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend.py" />
-      <option name="PARAMETERS" value="&quot;your_transaction_summary.txt&quot; &quot;master_accounts_file.txt&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qa327/__main__.py" />
+      <option name="PARAMETERS" value="&quot;your_account_list_file.txt&quot; &quot;your_transaction_summary.txt&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -122,19 +160,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="my old basckenbackend" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Quinterac-CISC-327" />
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="V3.0.1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/qa327" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my old basckenbackend.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qa327/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -143,10 +181,105 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="backend" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="V3.0.1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/qa327" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qa327/backend.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="backend2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="V3.0.1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/qa327" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qa327/backend2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="daily_script" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="V3.0.1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/qa327" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qa327/daily_script.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_ass6 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="V3.0.1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/qa327" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qa327/test_ass6.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.__main__" />
+      <item itemvalue="Python.backend" />
+      <item itemvalue="Python.test_ass6 (1)" />
+      <item itemvalue="Python.backend2" />
+      <item itemvalue="Python.app" />
+      <item itemvalue="Python.daily_script" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.backend" />
-        <item itemvalue="Python.my old basckenbackend" />
+        <item itemvalue="Python.app" />
+        <item itemvalue="Python.daily_script" />
+        <item itemvalue="Python.test_ass6 (1)" />
+        <item itemvalue="Python.backend2" />
       </list>
     </recent_temporary>
   </component>
@@ -155,56 +288,35 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b842828f-50e3-456a-bcb1-fc435181d1a3" name="Default Changelist" comment="" />
-      <created>1573151941384</created>
+      <changelist id="7769af00-a12e-4b0e-92df-ca47ed1915b0" name="Default Changelist" comment="" />
+      <created>1572657439684</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1573151941384</updated>
+      <updated>1572657439684</updated>
     </task>
-    <task id="LOCAL-00001" summary="anyas work">
-      <created>1573188584976</created>
+    <task id="LOCAL-00001" summary="did the transfer files. logout should not take long">
+      <created>1572668333825</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1573188584976</updated>
+      <updated>1572668333826</updated>
     </task>
-    <task id="LOCAL-00002" summary="anyas work">
-      <created>1573232324817</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1573232324817</updated>
-    </task>
-    <task id="LOCAL-00003" summary="anyas work">
-      <created>1573232373897</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1573232373897</updated>
-    </task>
-    <task id="LOCAL-00004" summary="anyas work">
-      <created>1573357203530</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1573357203530</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1685678" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.17110266" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="2" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.32934928" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.41035858" />
+      <window_info anchor="bottom" id="Version Control" order="5" weight="0.35856575" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.42629483" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.3997344" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -214,78 +326,144 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="master" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/master" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="anyas work" />
-    <option name="LAST_COMMIT_MESSAGE" value="anyas work" />
+    <MESSAGE value="did the transfer files. logout should not take long" />
+    <option name="LAST_COMMIT_MESSAGE" value="did the transfer files. logout should not take long" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/master_accounts_file_copy.txt" />
-    <entry file="file://$PROJECT_DIR$/backend_Version0_1.py" />
-    <entry file="file://$PROJECT_DIR$/master_accounts_file.txt" />
-    <entry file="file://$PROJECT_DIR$/my old basckenbackend.py" />
-    <entry file="file://$PROJECT_DIR$/backend.py" />
-    <entry file="file://$PROJECT_DIR$/your_transaction_summary.txt" />
-    <entry file="file://$PROJECT_DIR$/valid_account_list.txt">
+    <entry file="file://$PROJECT_DIR$/qa327_test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327_test/test_main_approach2.py" />
+    <entry file="file://$PROJECT_DIR$/qa327_test/T1.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327_test/T2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327_test/random.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327_test/test_ass6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2322">
+          <caret line="86" column="20" lean-forward="true" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/backend2.py" />
+    <entry file="file://$PROJECT_DIR$/qa327_test/daily_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327_test/backend_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-189">
+          <caret line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/your_transaction_summary_old.txt" />
+    <entry file="file://$PROJECT_DIR$/qa327/your_transaction_summary.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/your_account_list_file.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/daily_script.py" />
+    <entry file="file://$PROJECT_DIR$/qa327/backend_test.py" />
+    <entry file="file://$PROJECT_DIR$/qa327/T1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/T2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/T3.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/test_ass6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/__main__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8505">
+          <caret line="315" column="47" selection-start-line="315" selection-start-column="47" selection-end-line="315" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/backend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6399">
+          <caret line="237" column="12" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qa327/merged_transaction_summary.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assingment 6/test_ass6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
