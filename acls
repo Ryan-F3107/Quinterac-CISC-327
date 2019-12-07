@@ -1,0 +1,50 @@
+[1mdiff --git a/Assignment#4/master_accounts_file.txt b/Assignment#4/master_accounts_file.txt[m
+[1mindex abcc594..f2fef7f 100644[m
+[1m--- a/Assignment#4/master_accounts_file.txt[m
+[1m+++ b/Assignment#4/master_accounts_file.txt[m
+[36m@@ -1,5 +1,5 @@[m
+ 1223334 1000 skdf[m
+ 1234567 56600 Frozen[m
+ 2345678 100 dfsaf[m
+[31m-2468246 412103 sadfds[m
+[31m-3456789 8182 ana[m
+[32m+[m[32m2468246 432103 sadfds[m
+[32m+[m[32m3456789 7980 ana[m
+[1mdiff --git a/Assingment 6/__pycache__/app.cpython-36.pyc b/Assingment 6/__pycache__/app.cpython-36.pyc[m
+[1mindex f2e2e60..ead234a 100644[m
+Binary files a/Assingment 6/__pycache__/app.cpython-36.pyc and b/Assingment 6/__pycache__/app.cpython-36.pyc differ
+[1mdiff --git a/Assingment 6/__pycache__/backend.cpython-36.pyc b/Assingment 6/__pycache__/backend.cpython-36.pyc[m
+[1mindex 4a9a6f1..5739228 100644[m
+Binary files a/Assingment 6/__pycache__/backend.cpython-36.pyc and b/Assingment 6/__pycache__/backend.cpython-36.pyc differ
+[1mdiff --git a/Assingment 6/backend.py b/Assingment 6/backend.py[m
+[1mindex 4b3dfdb..3bd95e0 100644[m
+[1m--- a/Assingment 6/backend.py[m	
+[1m+++ b/Assingment 6/backend.py[m	
+[36m@@ -23,6 +23,7 @@[m [mtransactions as a list of strings '''[m
+ def readTransFile():[m
+     with open("merged_transaction_summary.txt", 'r') as transactionFile:[m
+         transactionList = transactionFile.read().splitlines()[m
+[32m+[m
+     return transactionList  # returns transactions as individual strings in a list[m
+ [m
+ [m
+[36m@@ -155,6 +156,7 @@[m [mdef deleteAccount(masterAccountDict,accountNum,accountName):[m
+         del masterAccountDict[accountNum]   #   Deletes the account from the master account dictionary[m
+     return masterAccountDict[m
+ [m
+[32m+[m
+ '''[m
+ This function checks that all the input for validity. [m
+ if something is wrong (invalid input or account number which is not new does not exist in dictionairy)[m
+[1mdiff --git a/Assingment 6/master_accounts_file.txt b/Assingment 6/master_accounts_file.txt[m
+[1mindex 7da6f60..2dad68e 100644[m
+[1m--- a/Assingment 6/master_accounts_file.txt[m	
+[1m+++ b/Assingment 6/master_accounts_file.txt[m	
+[36m@@ -1,5 +1,6 @@[m
+ 1223334 1000 skdf[m
+[31m-1234567 134600 Frozen[m
+[32m+[m[32m1234567 160600 Frozen[m
+ 2345678 100 dfsaf[m
+ 2468246 412103 sadfds[m
+ 3456789 8182 ana[m
+[32m+[m[32m4444444 000 hello[m

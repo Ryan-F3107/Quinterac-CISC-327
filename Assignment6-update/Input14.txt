@@ -1,0 +1,6 @@
+login
+agent
+createacct
+1245874
+John
+no

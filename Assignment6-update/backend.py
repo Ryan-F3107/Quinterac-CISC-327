@@ -1,11 +1,15 @@
 """
 CISC 327 - Assignment 4
+
 This program simulates the backend office of Quinterac.
+
 The input files are the Merged Transaction Summary File and the Master Account File
 The generated output file is the New Master Account file and the Valid Account List File
+
 The program intends to take in the two input files, modify the master account file based on the content from
 the Merged Transaction Summary File and generate the New Valid Account list and new master account list,
 for this program, it will run starting from the main function within the backend.py file.
+
 Authors:
         Anna Chulukov, 17avc2@queensu.ca, 20082947
         Faranak Sharifi, 17fsb@queensu.ca, 20068900
@@ -13,9 +17,7 @@ Authors:
         Ryan Fernandes, 17rf@queensu.ca, 20067569
 """
 
-import sys
-
-
+import os
 '''This function takes in the first argument of the program, the transaction summary file, and returns the 
 transactions as a list of strings '''
 
@@ -23,7 +25,6 @@ transactions as a list of strings '''
 def readTransFile():
     with open("merged_transaction_summary.txt", 'r') as transactionFile:
         transactionList = transactionFile.read().splitlines()
-
     return transactionList  # returns transactions as individual strings in a list
 
 
@@ -60,7 +61,7 @@ adds the content from the master account dictionary into the file with the right
 
 
 def writeMaster(masterAccountDict):
-    masterAccountFile = open("master_accounts_file.txt", 'w')
+    masterAccountFile = open("master_accounts_file.txt", "w")
     for accountNum in sorted(masterAccountDict.keys()):
         masterAccountFile.write(accountNum + " " + masterAccountDict[accountNum][0] + " " +
                                 masterAccountDict[accountNum][1] + "\n")
@@ -138,7 +139,7 @@ and updates the master account dictionary, adding a new account into the master 
 
 def createAccount(masterAccountDict,accountNum,accountName):
     if accountNum in masterAccountDict:
-        print("Please enter new account number, this one is taken!")
+        print("Please enter new account number that is not the following: " + accountNum + ". This one is taken!")
     else:
         # Since no other transaction is accepted after an account is created, the new accounts balance is $0.00
         masterAccountDict[accountNum] = ["000", accountName]
@@ -155,7 +156,6 @@ def deleteAccount(masterAccountDict,accountNum,accountName):
     else:
         del masterAccountDict[accountNum]   #   Deletes the account from the master account dictionary
     return masterAccountDict
-
 
 '''
 This function checks that all the input for validity. 
@@ -214,7 +214,6 @@ def main():
 
     # read transactions in a list
     transactionList = readTransFile()
-    print(transactionList )
     for x in transactionList:  # goes through a list of transactions
         eachTransaction = x.split()
         #  Each part of the Transaction Summary line is assigned a variable.
@@ -238,6 +237,5 @@ def main():
             #   Calls write master accounts file
             writeMaster(masterAccountDict)
             newValidAccountList(masterAccountDict)
-
 
 main()
