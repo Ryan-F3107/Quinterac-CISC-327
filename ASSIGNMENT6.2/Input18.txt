@@ -1,0 +1,7 @@
+login
+atm
+deposit
+5629873
+45000
+logout
+no

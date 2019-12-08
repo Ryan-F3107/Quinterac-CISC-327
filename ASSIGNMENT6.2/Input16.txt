@@ -1,0 +1,7 @@
+login
+atm
+deposit
+5468136
+12000
+logout
+no

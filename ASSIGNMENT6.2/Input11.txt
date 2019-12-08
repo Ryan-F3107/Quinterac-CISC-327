@@ -1,0 +1,8 @@
+login
+atm
+transfer
+2345678
+1111111
+1500
+logout
+no

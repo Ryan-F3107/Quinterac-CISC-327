@@ -1,0 +1,7 @@
+login
+atm
+deposit
+1245874
+680000
+logout
+no

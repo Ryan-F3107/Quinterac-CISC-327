@@ -1,0 +1,7 @@
+login
+atm
+withdraw
+2345678
+500
+logout
+no
